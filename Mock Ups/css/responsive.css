@@ -1,0 +1,559 @@
+/* ========================================
+   UGC Rights - Responsive Styles
+   Mobile-first responsive design with media queries
+   ======================================== */
+
+/* ========== MOBILE (Default - Up to 767px) ========== */
+/* Base styles are mobile-first, defined in main.css and components.css */
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+
+  /* Navigation */
+  .main-nav {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 100%;
+    max-width: 300px;
+    height: calc(100vh - 70px);
+    background-color: var(--primary-white);
+    border-left: 1px solid var(--medium-gray);
+    box-shadow: -2px 0 8px var(--shadow-light);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--space-2xl) var(--space-xl);
+    transition: right var(--transition-base);
+    z-index: 999;
+  }
+
+  .main-nav.active {
+    right: 0;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--soft-gray);
+    font-size: var(--text-base);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: 60vh;
+    padding-top: calc(var(--space-3xl) + 60px);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .problem-statement,
+  .solution-statement {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-label {
+    font-size: var(--text-xl);
+  }
+
+  .hero-text {
+    font-size: var(--text-base);
+  }
+
+  /* About Section */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about-card {
+    padding: var(--space-xl);
+  }
+
+  /* Demo Section */
+  .demo-container {
+    gap: var(--space-2xl);
+  }
+
+  .input-area {
+    padding: var(--space-lg);
+  }
+
+  .demo-textarea {
+    font-size: var(--text-sm);
+    padding: var(--space-md);
+  }
+
+  .results-area {
+    padding: var(--space-lg);
+  }
+
+  .hook-scores {
+    gap: var(--space-lg);
+  }
+
+  /* Pricing Section */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .pricing-card {
+    padding: var(--space-xl);
+  }
+
+  /* Questionnaire */
+  .question-header {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .question-title {
+    font-size: var(--text-base);
+  }
+
+  .question-answer {
+    padding: 0 var(--space-lg) var(--space-lg) var(--space-lg);
+    font-size: var(--text-sm);
+  }
+
+  /* Contact Form */
+  .contact-form {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  /* Section Spacing */
+  section {
+    padding: var(--space-3xl) 0;
+  }
+
+  /* Typography adjustments */
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xl);
+  }
+}
+
+/* ========== SMALL MOBILE (Up to 480px) ========== */
+@media (max-width: 480px) {
+
+  /* Extra small adjustments */
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .logo {
+    font-size: var(--text-xl);
+  }
+
+  .pricing-badge {
+    font-size: 10px;
+    padding: 4px var(--space-md);
+  }
+
+  .price-amount {
+    font-size: var(--text-4xl);
+  }
+
+  .btn {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--text-sm);
+  }
+
+  .card-icon {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* ========== TABLET (768px - 1023px) ========== */
+@media (min-width: 768px) {
+
+  /* Navigation */
+  .hamburger {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    flex-direction: row;
+    gap: var(--space-xl);
+    padding: 0;
+    height: auto;
+    width: auto;
+    max-width: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav-link {
+    width: auto;
+    padding-bottom: var(--space-xs);
+    border: none;
+  }
+
+  .nav-link::after {
+    display: block;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  /* About Section */
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  /* Demo Section */
+  .demo-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Pricing Section */
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  /* Section Spacing */
+  section {
+    padding: var(--space-4xl) 0;
+  }
+}
+
+/* ========== DESKTOP (1024px - 1439px) ========== */
+@media (min-width: 1024px) {
+
+  /* Navigation */
+  .main-nav {
+    gap: var(--space-2xl);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: 80vh;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  /* About Section */
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Demo Section */
+  .demo-container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .input-area {
+    align-self: start;
+  }
+
+  .results-area {
+    align-self: start;
+  }
+
+  /* Pricing Section */
+  .pricing-grid {
+    max-width: 1000px;
+  }
+
+  /* Questionnaire */
+  .questions-container {
+    max-width: 900px;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    max-width: 700px;
+  }
+}
+
+/* ========== LARGE DESKTOP (1440px and up) ========== */
+@media (min-width: 1440px) {
+
+  /* Container */
+  .container {
+    max-width: var(--container-xl);
+    padding: 0 var(--space-2xl);
+  }
+
+  /* Typography */
+  .section-title {
+    font-size: var(--text-4xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-xl);
+  }
+
+  /* Hero Section */
+  .hero-label {
+    font-size: var(--text-3xl);
+  }
+
+  .hero-text {
+    font-size: var(--text-xl);
+  }
+
+  /* Spacing */
+  section {
+    padding: clamp(var(--space-4xl), 10vw, 8rem) 0;
+  }
+
+  .about-grid,
+  .pricing-grid {
+    gap: var(--space-3xl);
+  }
+}
+
+/* ========== LANDSCAPE ORIENTATION ========== */
+@media (max-width: 1023px) and (orientation: landscape) {
+
+  /* Adjust hero for landscape mobile/tablet */
+  .hero-section {
+    min-height: 100vh;
+    padding-top: calc(var(--space-2xl) + 60px);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .problem-statement,
+  .solution-statement {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Reduce vertical spacing */
+  section {
+    padding: var(--space-2xl) 0;
+  }
+}
+
+/* ========== TOUCH DEVICES ========== */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Increase touch targets for better mobile UX */
+  .btn {
+    min-height: 48px;
+    padding: var(--space-md) var(--space-xl);
+  }
+
+  .nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .question-header {
+    min-height: 60px;
+  }
+
+  .toggle-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .about-card:hover,
+  .pricing-card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px var(--shadow-light);
+  }
+
+  .btn-primary:hover {
+    transform: none;
+    box-shadow: 0 2px 8px var(--shadow-light);
+  }
+
+  .btn-secondary:hover {
+    transform: none;
+    background-color: var(--primary-white);
+    border-color: var(--medium-gray);
+  }
+}
+
+/* ========== HIGH DPI DISPLAYS ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Adjustments for retina displays if needed */
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+
+  /* Hide interactive elements */
+  .nav-header,
+  .hamburger,
+  .demo-section,
+  .contact-section,
+  .site-footer,
+  .btn {
+    display: none !important;
+  }
+
+  /* Adjust colors for print */
+  body {
+    background: white;
+    color: black;
+  }
+
+  .about-card,
+  .pricing-card,
+  .question-item {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  /* Expand all accordion items */
+  .question-body {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Remove shadows and backgrounds */
+  * {
+    box-shadow: none !important;
+    background-color: white !important;
+  }
+}
+
+/* ========== DARK MODE SUPPORT (Optional) ========== */
+@media (prefers-color-scheme: dark) {
+  /* Uncomment and customize if you want to support dark mode */
+
+  /*
+  :root {
+    --primary-white: #1a1a1a;
+    --soft-gray: #2d2d2d;
+    --medium-gray: #404040;
+    --dark-text: #f5f5f5;
+    --light-text: #cccccc;
+  }
+
+  body {
+    background-color: var(--primary-white);
+    color: var(--dark-text);
+  }
+
+  .nav-header {
+    background-color: #1a1a1a;
+    border-bottom-color: #404040;
+  }
+
+  .about-card,
+  .pricing-card,
+  .contact-form,
+  .results-area {
+    background-color: #2d2d2d;
+  }
+
+  .form-input,
+  .form-textarea,
+  .demo-textarea {
+    background-color: #1a1a1a;
+    border-color: #404040;
+    color: #f5f5f5;
+  }
+  */
+}
+
+/* ========== CUSTOM BREAKPOINTS ========== */
+
+/* Medium tablets (landscape) */
+@media (min-width: 900px) and (max-width: 1023px) {
+
+  .demo-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large tablets/Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  .container {
+    max-width: 1000px;
+  }
+}
+
+/* ========== ACCESSIBILITY - FOCUS STATES ========== */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Enhanced focus for keyboard navigation */
+  *:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 3px;
+    transition: outline-offset 0.2s ease;
+  }
+}
+
+/* ========== UTILITY CLASSES FOR RESPONSIVE DISPLAY ========== */
+
+/* Hide on mobile */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+@media (min-width: 768px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}
+
+/* Show only on tablet */
+@media (max-width: 767px), (min-width: 1024px) {
+  .show-tablet-only {
+    display: none !important;
+  }
+}
+
+/* Show only on desktop */
+@media (max-width: 1023px) {
+  .show-desktop-only {
+    display: none !important;
+  }
+}
