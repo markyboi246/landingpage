@@ -1,0 +1,29 @@
+# Netlify Configuration for UGC Hoox Landing Page
+
+[build]
+  # Directory to publish (since this is the Mock Ups folder)
+  publish = "."
+
+# Form handling settings
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Headers for better caching
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirect index.html to root
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 200

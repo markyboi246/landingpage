@@ -1,6 +1,7 @@
 /**
- * UGC Rights - Form Handler
+ * UGC Hoox - Form Handler
  * Handles FAQ accordion and contact form functionality
+ * Integrates with Netlify Forms for submission
  */
 
 (function() {
@@ -113,7 +114,7 @@
   }
 
   /**
-   * Handles contact form submission
+   * Handles contact form submission via Netlify Forms
    */
   function handleFormSubmit(e) {
     e.preventDefault();
@@ -138,17 +139,31 @@
 
     // Show loading state
     const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="btn-loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span> Sending...';
     submitBtn.disabled = true;
 
-    // Submit to Netlify Forms
+    // Build form data for Netlify
     const formData = new FormData(form);
 
-    fetch('/', {
+    // Encode form data for Netlify submission
+    const encode = (data) => {
+      return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    };
+
+    // Convert FormData to object
+    const formObject = {};
+    formData.forEach((value, key) => {
+      formObject[key] = value;
+    });
+
+    // Submit to Netlify Forms
+    fetch(form.getAttribute('action') || '/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
+      body: encode(formObject)
     })
     .then(response => {
       if (response.ok) {
@@ -158,20 +173,27 @@
         );
         form.reset();
 
+        // Clear success styling from fields
+        const inputs = form.querySelectorAll('.form-input, .form-textarea');
+        inputs.forEach(input => input.classList.remove('success'));
+
         // Clear success message after 5 seconds
         setTimeout(() => {
           hideFormMessage();
         }, 5000);
       } else {
-        throw new Error('Form submission failed');
+        return response.text().then(text => {
+          console.error('Netlify response:', text);
+          throw new Error('Form submission failed');
+        });
       }
     })
     .catch(error => {
       console.error('Form error:', error);
-      showFormMessage('Oops! Something went wrong. Please try again.', 'error');
+      showFormMessage('Oops! Something went wrong. Please try again or email us directly.', 'error');
     })
     .finally(() => {
-      submitBtn.textContent = originalBtnText;
+      submitBtn.innerHTML = originalBtnText;
       submitBtn.disabled = false;
     });
   }
