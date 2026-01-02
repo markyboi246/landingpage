@@ -143,22 +143,119 @@
 
 /* ========== ABOUT CARDS STAGGER ========== */
 .about-card.reveal-scale:nth-child(1).active {
-  animation: scaleInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: cardSlideUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .about-card.reveal-scale:nth-child(2).active {
-  animation: scaleInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards;
+  animation: cardSlideUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards;
 }
 
 .about-card.reveal-scale:nth-child(3).active {
-  animation: scaleInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  animation: cardSlideUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
 }
 
-/* Card icon rotation on reveal */
+@keyframes cardSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card icon animation on reveal */
 .about-card.active .card-icon {
-  animation: iconSpinIn 0.6s ease-out 0.3s backwards;
+  animation: iconPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
 }
 
+.about-card.active .icon-glow {
+  animation: glowFadeIn 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes iconPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-20deg);
+  }
+  70% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes glowFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Card number fade in */
+.about-card.active .card-number {
+  animation: numberFadeIn 0.5s ease-out 0.2s backwards;
+}
+
+@keyframes numberFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Metrics pills stagger animation */
+.about-card.active .metric {
+  animation: metricPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.about-card.active .metric:nth-child(1) { animation-delay: 0.5s; }
+.about-card.active .metric:nth-child(2) { animation-delay: 0.6s; }
+.about-card.active .metric:nth-child(3) { animation-delay: 0.7s; }
+.about-card.active .metric:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes metricPop {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Highlight text animation */
+.about-card.active .highlight-text {
+  animation: highlightSlide 0.5s ease-out 0.6s backwards;
+}
+
+@keyframes highlightSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Legacy icon spin animation for backwards compat */
 @keyframes iconSpinIn {
   from {
     opacity: 0;
